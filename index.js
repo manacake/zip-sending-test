@@ -19,7 +19,8 @@ app.get('/', async (req, res) => {
   await zip.generateAsync({type: 'nodebuffer'})
   .then((buf) => {
     res.type('application/zip')
-    res.send(buf)
+    // res.send(buf.toString('ascii')) // Allows zip to download, but can't open!
+    res.send(buf) // This WORKS!!!
   })
 })
 
